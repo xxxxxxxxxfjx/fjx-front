@@ -39,3 +39,19 @@ pnpm test:unit
 ```sh
 pnpm lint
 ```
+
+---
+
+### Node
+
+```sh
+node -v 18.16.0
+```
+
+### 项目介绍
+
+1. 技术栈
+   - vue3 + vue-router4 + vite + axios + pinia + loadsh + ESlint + Prettier + Tailwindcss
+2. 项目亮点
+   - svg图标组件的封装
+   - popup弹出层的封装
