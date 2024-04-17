@@ -29,7 +29,7 @@
 import { ref, useSlots } from 'vue'
 
 const slots = useSlots()
-console.log(slots.default);
+// console.log(slots.default);
 
 const inputFocus = ref(false)
 const inputValue = ref("")
