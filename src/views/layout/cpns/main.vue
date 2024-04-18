@@ -1,11 +1,10 @@
 <template>
-  <div class=" bg-gray-700">
-
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup>
-import { } from 'vue'
+import { ref } from 'vue'
+const show = ref(false)
 
 </script>
 

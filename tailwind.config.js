@@ -16,7 +16,7 @@ export default {
       },
       height: {
         header: '72px',
-        main: 'calc( 100vh - 72px )'
+        main: 'calc(100vh - 72px)'
       },
       color: {
         main: '#f44c58',
