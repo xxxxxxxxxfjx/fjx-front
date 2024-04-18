@@ -39,4 +39,17 @@ watch(show, (val) => {
 .fade-leave-to {
   opacity: 0;
 }
+
+.popup-enter-active {
+  transition: all 0.3s;
+}
+
+.popup-leave-active {
+  transition: all 0.8s;
+}
+
+.popup-enter-from,
+.popup-leave-to {
+  transform: translateY(100%);
+}
 </style>
