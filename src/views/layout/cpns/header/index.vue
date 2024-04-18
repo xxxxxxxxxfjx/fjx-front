@@ -18,4 +18,4 @@ import HeaderMy from "./cpns/header-my.vue"
 
 </script>
 
-<style lang='scss' scoped></style>./cpns/header-theme.vue
+<style lang='scss' scoped></style>

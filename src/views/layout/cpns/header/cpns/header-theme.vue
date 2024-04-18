@@ -1,5 +1,5 @@
 <template>
-  <fjx-popover>
+  <fjx-popover class="mr-2">
     <template #reference="props">
       <fjx-svg-icon name="theme-light"
         class="w-4 h-4 p-1 cursor-pointer rounded-sm outline-none duration-150 hover:bg-zinc-100/60"

@@ -1,18 +1,16 @@
 <template>
-  <div class="w-full">
-    <fjx-search>
-      <template #dropdown>
-        <div>dropdown</div>
-        <div>dropdown</div>
-        <div>dropdown</div>
-        <div>dropdown</div>
-        <div>dropdown</div>
-        <div>dropdown</div>
-        <div>dropdown</div>
-        <div>dropdown</div>
-      </template>
-    </fjx-search>
-  </div>
+  <fjx-search class="mr-2">
+    <template #dropdown>
+      <div>dropdown</div>
+      <div>dropdown</div>
+      <div>dropdown</div>
+      <div>dropdown</div>
+      <div>dropdown</div>
+      <div>dropdown</div>
+      <div>dropdown</div>
+      <div>dropdown</div>
+    </template>
+  </fjx-search>
 </template>
 
 <script setup>
