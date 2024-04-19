@@ -1,8 +1,9 @@
 <template>
   <div class=" bg-white sticky top-0 left-0 z-10">
     <ul ref="ulRef" class=" relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden">
-      <li class="absolute  h-[22px] bg-zinc-900 rounded-lg duration-200" :style="sliderStyle"></li>
-      <li class="z-20 fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white shadow-l-white"
+      <li class="absolute  h-[22px] bg-zinc-900 rounded-lg duration-200 dark:bg-zinc-800" :style="sliderStyle"></li>
+      <li
+        class="z-20 fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white shadow-l-white dark:bg-zinc-900  dark:shadow-l-zinc"
         @click="handleClickHamburger">
         <fjx-svg-icon class=" w-1.5 h-1.5" name="hamburger"></fjx-svg-icon>
       </li>

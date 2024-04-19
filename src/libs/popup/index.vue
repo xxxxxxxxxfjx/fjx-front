@@ -5,7 +5,7 @@
         <div v-if="show" class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0" @click="show = false"></div>
       </transition>
       <transition name="popup">
-        <div v-if="show" v-bind="attrs" class=" w-screen z-50 fixed bottom-0 bg-white">
+        <div v-if="show" v-bind="attrs" class=" w-screen z-50 fixed bottom-0 bg-white dark:bg-zinc-800">
           <slot />
         </div>
       </transition>

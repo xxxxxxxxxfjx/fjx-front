@@ -1,22 +1,24 @@
 <template>
   <fjx-popover class="mr-2">
     <template #reference="props">
-      <fjx-svg-icon name="theme-light"
-        class="w-4 h-4 p-1 cursor-pointer rounded-sm outline-none duration-150 hover:bg-zinc-100/60"
-        fillClass="text-zinc-900"></fjx-svg-icon>
+      <fjx-svg-icon :name="mainTheme"
+        class="w-4 h-4 p-1 cursor-pointer rounded-sm outline-none duration-150 hover:bg-zinc-100/60 dark:hover:bg-zinc-900"
+        fillClass="text-zinc-900 dark:fill-zinc-300"></fjx-svg-icon>
     </template>
     <div class="w-[140px] overflow-hidden">
-      <div class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60" v-for="item in theme"
-        :key="item.id">
-        <fjx-svg-icon :name="item.icon" class="w-1.5 h-1.5 mr-1" fillClass="fill-zinc-900"></fjx-svg-icon>
-        <span class="text-zinc-800 text-sm">{{ item.name }}</span>
+      <div class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
+        v-for="item in theme" :key="item.id" @click="handleClickTheme(item)">
+        <fjx-svg-icon :name="item.icon" class="w-1.5 h-1.5 mr-1"
+          fillClass="fill-zinc-900 dark:fill-zinc-300"></fjx-svg-icon>
+        <span class="text-zinc-800 text-sm dark:text-zinc-300">{{ item.name }}</span>
       </div>
     </div>
   </fjx-popover>
 </template>
 
 <script setup>
-import { } from 'vue'
+import { computed } from 'vue'
+import { useThemeStore } from "@/stores/theme.js"
 import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from "@/constants"
 
 const theme = [
@@ -37,6 +39,15 @@ const theme = [
     name: '跟随系统'
   },
 ]
+
+const themeStore = useThemeStore()
+const mainTheme = computed(() => {
+  return theme.find(item => item.type === themeStore.theme).icon
+})
+const handleClickTheme = (item) => {
+  console.log(item);
+  themeStore.setTheme(item.type)
+}
 
 </script>
 
