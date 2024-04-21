@@ -4,6 +4,7 @@ import { useWindowSize } from '@vueuse/core'
 
 const { width } = useWindowSize()
 export const isMobileTerminal = computed(() => {
+  // console.log(width.value)
   return width.value < PC_DEVICE_WIDTH
 })
 

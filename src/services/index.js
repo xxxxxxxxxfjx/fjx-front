@@ -22,7 +22,8 @@ service.interceptors.response.use(
     }
   },
   (err) => {
-    const msg = err.data.message
+    console.error(err)
+    const msg = err.data?.message
     console.log(msg)
   }
 )
