@@ -1,10 +1,17 @@
 <template>
-  <fjx-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
+  <!-- <fjx-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
     :picturePreReading="false">
     <template #default="{ item, width, index }">
       <item-vue :data="item" :columnWidth="width" :index="index" />
     </template>
-  </fjx-waterfall>
+</fjx-waterfall> -->
+  <e-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
+    :picturePreReading="false">
+
+    <template #default="{ item, width, index }">
+      <item-vue :data="item" :columnWidth="width" :index="index" />
+    </template>
+  </e-waterfall>
 </template>
 
 <script setup>
