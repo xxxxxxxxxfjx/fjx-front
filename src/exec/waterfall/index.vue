@@ -119,7 +119,7 @@ const useItemsHeight = () => {
 
 // 计算item的位置
 const useItemLocation = () => {
-  console.log(itemsHeight);
+  // console.log(itemsHeight);
   props.data.forEach((item, index) => {
     if (item._style) {
       return
@@ -132,7 +132,7 @@ const useItemLocation = () => {
     // 变更存储高度的对象
     increasingHeight(index)
   })
-  console.log(props.data);
+  // console.log(props.data);
   // 更新容器高度
   containerHeight.value = getMaxHeight(columnsHeight.value)
 }

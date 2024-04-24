@@ -5,7 +5,7 @@
       <item-vue :data="item" :columnWidth="width" :index="index" />
     </template>
 </fjx-waterfall> -->
-  <fjx-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
+  <!-- <fjx-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
     <e-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
       :picturePreReading="false">
 
@@ -13,7 +13,16 @@
         <item-vue :data="item" :columnWidth="width" :index="index" />
       </template>
     </e-waterfall>
-  </fjx-infinite>
+  </fjx-infinite> -->
+  <e-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
+    <e-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
+      :picturePreReading="false">
+
+      <template #default="{ item, width, index }">
+        <item-vue :data="item" :columnWidth="width" :index="index" />
+      </template>
+    </e-waterfall>
+  </e-infinite>
 </template>
 
 <script setup>
@@ -38,7 +47,7 @@ const getPexelsList = async () => {
     data.page++
   }
   const res = await getPexelsListApi(data)
-  console.log(res);
+  // console.log(res);
 
   if (data.page === 1) {
     pexelsList.value = res.list

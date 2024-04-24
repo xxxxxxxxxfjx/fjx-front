@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { ref, toRefs } from 'vue'
+import { ref, watch } from 'vue'
 import { useIntersectionObserver } from "@vueuse/core"
 const props = defineProps({
   isFinished: {
@@ -21,13 +21,26 @@ const loading = defineModel()
 const emits = defineEmits(['update:modelValue', 'onLoading'])
 
 const targetRef = ref(null)
+const isIntersectingRef = ref(false)
 useIntersectionObserver(targetRef,
   ([{ isIntersecting }]) => {
-    if (isIntersecting && !props.modelValue && !props.isFinished) {
+    isIntersectingRef.value = isIntersecting
+    onEmit()
+  },)
+
+const onEmit = () => {
+  setTimeout(() => {
+    if (isIntersectingRef.value && !props.modelValue && !props.isFinished) {
       loading.value = true
       emits('onLoading')
     }
-  },)
+  }, 100)
+}
+
+watch(loading, () => {
+  onEmit()
+})
+
 
 </script>
 
