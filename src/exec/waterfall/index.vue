@@ -6,7 +6,7 @@
         <slot :item="item" :width="columnWidth" :index="index" />
       </div>
     </template>
-    <div v-else>加载中</div>
+    <div v-else class="text-base text-zinc-400 text-center">数据加载中...</div>
   </div>
 </template>
 
