@@ -1,5 +1,5 @@
 <template>
-  <fjx-popover class="mr-2">
+  <e-popover class="mr-2">
     <template #reference="props">
       <fjx-svg-icon :name="mainTheme"
         class="w-4 h-4 p-1 cursor-pointer rounded-sm outline-none duration-150 hover:bg-zinc-100/60 dark:hover:bg-zinc-900"
@@ -13,7 +13,7 @@
         <span class="text-zinc-800 text-sm dark:text-zinc-300">{{ item.name }}</span>
       </div>
     </div>
-  </fjx-popover>
+  </e-popover>
 </template>
 
 <script setup>

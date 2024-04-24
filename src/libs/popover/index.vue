@@ -79,7 +79,7 @@ watch(isVisiable, v => {
       case BOTTOM_LEFT:
         position.value.top = `${referenceHeight.value}px`
         position.value.left = `${-targetWidth.value}px`
-        // console.log(position.value);
+        console.log(position.value);
         break;
       case BOTTOM_RIGHT:
         position.value.top = `${referenceHeight.value}px`
