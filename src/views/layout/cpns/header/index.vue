@@ -1,7 +1,7 @@
 <template>
   <div class=" bg-white w-full border-b border-b-zinc-200 px-2 py-1 dark:bg-zinc-800  dark:border-b-zinc-700">
     <div class=" flex items-center">
-      <img class=" h-4 w-4 cursor-pointer mr-2 rounded-sm" :src="getImgs('kk.jpg')">
+      <img v-lazy class=" h-4 w-4 cursor-pointer mr-2 rounded-sm" :src="getImgs('kk.jpg')">
       <header-search></header-search>
       <header-theme></header-theme>
       <header-my></header-my>

@@ -3,7 +3,7 @@
     <template #reference>
       <div
         class="flex items-center relative cursor-pointer p-0.5 rounded-sm hover:bg-zinc-100/90 dark:hover:bg-zinc-900">
-        <img
+        <img v-lazy
           src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651074011&t=ba5d64079381425813e4c269bcac1a1b"
           class="w-3 h-3 rounded-sm" alt="">
         <fjx-svg-icon name="down-arrow" class=" w-1.5 h-1.5 ml-1" fillClass="dark:fill-zinc-300"></fjx-svg-icon>
