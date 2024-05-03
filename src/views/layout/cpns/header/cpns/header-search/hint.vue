@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div v-for="(item, index) in hintData" :key="index" @click="handleClick(item)"
+    <div v-for="(item, index) in hintData" :key="index" @click="handleClick(item)" v-html="handleTextHighlight(item)"
       class="py-1 pl-1 rounded font-bold text-base text-zinc-500 cursor-pointer duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-900">
-      {{ item }}
     </div>
   </div>
 </template>
@@ -32,6 +31,12 @@ const getHint = async () => {
 const handleClick = (item) => {
   emits(EMIT_HANDLE_CLICK, item)
 }
+const handleTextHighlight = (text) => {
+  const str = `<span class="text-zinc-900 dark:text-zinc-200">${props.searchText}<span/>`
+  const reg = new RegExp(props.searchText, 'gi')
+  return text.replace(reg, str)
+}
+
 
 watchDebounced(
   () => props.searchText,
