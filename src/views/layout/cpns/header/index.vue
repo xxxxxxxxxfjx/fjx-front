@@ -12,10 +12,11 @@
 <script setup>
 import { } from 'vue'
 import getImgs from "@/utils/getImgs.js"
-import HeaderSearch from "./cpns/header-search.vue"
+import HeaderSearch from "./cpns/header-search/index.vue"
 import HeaderTheme from "./cpns/header-theme.vue"
 import HeaderMy from "./cpns/header-my.vue"
 
 </script>
 
 <style lang='scss' scoped></style>
+./cpns/header-search/header-search.vue

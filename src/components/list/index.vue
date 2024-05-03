@@ -26,10 +26,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import ItemVue from "./item.vue"
 import { getPexelsListApi } from "@/services/modules/pexels"
 import { isMobileTerminal } from "@/utils/flexiable"
+import { useCategoryStore } from '@/stores/category';
+
+const categoryStore = useCategoryStore();
 
 let data = {
   page: 1,
@@ -59,6 +62,22 @@ const getPexelsList = async () => {
   }
   loading.value = false
 }
+
+const resetQuery = (newRequery) => {
+  data = {
+    ...data,
+    ...newRequery
+  }
+  pexelsList.value = []
+  isFinished.value = false
+}
+
+watch(() => categoryStore.currentCategory, (currentCategory) => {
+  resetQuery({
+    page: 1,
+    categoryId: currentCategory.id
+  })
+})
 </script>
 
 <style lang='scss' scoped></style>

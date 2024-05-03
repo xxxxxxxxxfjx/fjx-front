@@ -9,7 +9,7 @@
         <fjx-svg-icon :name="isOpen ? 'fold' : 'unfold'" class="w-1 h-1"
           fillClass="fill-zinc-900 dark:fill-zinc-300"></fjx-svg-icon>
       </div>
-      <li v-for="(item, index) in categorys" :key="item.id" @click="currentIndex = index"
+      <li v-for="(item, index) in categorys" :key="item.id" @click="handleClick(item, index)"
         class="h-4 leading-4 px-1.5 mr-1 mb-1  rounded font-bold text-base duration-200 cursor-pointer hover:bg-zinc-200  dark:text-zinc-500 dark:hover:text-zinc-300  dark:hover:bg-zinc-900"
         :class="[currentIndex === index ? 'bg-zinc-200 dark:text-zinc-300  dark:bg-zinc-900' : '']">
         {{ item.name }}
@@ -20,12 +20,18 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useCategoryStore } from '@/stores/category';
 
+const categoryStore = useCategoryStore();
 const categorys = defineModel()
 const isOpen = ref(false)
 
 const currentIndex = ref(0)
 
+const handleClick = (item, index) => {
+  currentIndex.value = index
+  categoryStore.setCurrentCategory(item)
+}
 
 </script>
 

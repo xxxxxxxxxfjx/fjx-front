@@ -30,10 +30,10 @@
 import { ref, useSlots } from 'vue'
 
 const slots = useSlots()
-// console.log(slots.default);
+
+const inputValue = defineModel()
 
 const inputFocus = ref(false)
-const inputValue = ref("")
 const handleSearch = () => {
   try {
     if (!inputValue.value.length) {

@@ -8,7 +8,7 @@
         <fjx-svg-icon class=" w-1.5 h-1.5" name="hamburger"></fjx-svg-icon>
       </li>
       <li :ref="getLiRefs" v-for="(item, index) in  items " :key="item.id"
-        class=" shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4" @click="handleClick(index)"
+        class=" shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4" @click="handleClick(item, index)"
         :class="{ 'text-zinc-100': itemIndex === index }">
         {{ item.name }}
       </li>
@@ -23,7 +23,9 @@
 import { ref, watch } from 'vue'
 import { useScroll } from "@vueuse/core"
 import MenueVue from "@/components/menu/index.vue"
+import { useCategoryStore } from '@/stores/category';
 
+const categoryStore = useCategoryStore();
 
 const items = defineModel()
 const sliderStyle = ref({
@@ -41,9 +43,10 @@ const getLiRefs = (el) => {
     itemRefs.push(el)
   }
 }
-const handleClick = (index) => {
+const handleClick = (item, index) => {
   // console.log(index);
   itemIndex.value = index
+  categoryStore.setCurrentCategory(item)
 }
 watch(itemIndex, (index) => {
   // console.log(index);
@@ -67,6 +70,9 @@ const handleClickMenu = (index) => {
   itemIndex.value = index
   show.value = !show.value;
 }
+
+
+
 
 </script>
 
