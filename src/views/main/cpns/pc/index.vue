@@ -20,9 +20,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useCategoryStore } from '@/stores/category';
+import { useAppStore } from '@/stores/app';
 
-const categoryStore = useCategoryStore();
+const appStore = useAppStore();
 const categorys = defineModel()
 const isOpen = ref(false)
 
@@ -30,7 +30,7 @@ const currentIndex = ref(0)
 
 const handleClick = (item, index) => {
   currentIndex.value = index
-  categoryStore.setCurrentCategory(item)
+  appStore.setCurrentCategory(item)
 }
 
 </script>

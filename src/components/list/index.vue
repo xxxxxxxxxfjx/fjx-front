@@ -30,9 +30,9 @@ import { ref, watch } from 'vue'
 import ItemVue from "./item.vue"
 import { getPexelsListApi } from "@/services/modules/pexels"
 import { isMobileTerminal } from "@/utils/flexiable"
-import { useCategoryStore } from '@/stores/category';
+import { useAppStore } from '@/stores/app';
 
-const categoryStore = useCategoryStore();
+const appStore = useAppStore();
 
 let data = {
   page: 1,
@@ -72,10 +72,18 @@ const resetQuery = (newRequery) => {
   isFinished.value = false
 }
 
-watch(() => categoryStore.currentCategory, (currentCategory) => {
+watch(() => appStore.currentCategory, (currentCategory) => {
   resetQuery({
     page: 1,
     categoryId: currentCategory.id
+  })
+})
+
+// 监听搜索文本变化
+watch(() => appStore.searchText, (val) => {
+  resetQuery({
+    page: 1,
+    searchText: val
   })
 })
 </script>

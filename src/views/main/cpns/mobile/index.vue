@@ -23,9 +23,9 @@
 import { ref, watch } from 'vue'
 import { useScroll } from "@vueuse/core"
 import MenueVue from "@/components/menu/index.vue"
-import { useCategoryStore } from '@/stores/category';
+import { useAppStore } from '@/stores/app';
 
-const categoryStore = useCategoryStore();
+const appStore = useAppStore();
 
 const items = defineModel()
 const sliderStyle = ref({
@@ -46,7 +46,7 @@ const getLiRefs = (el) => {
 const handleClick = (item, index) => {
   // console.log(index);
   itemIndex.value = index
-  categoryStore.setCurrentCategory(item)
+  appStore.setCurrentCategory(item)
 }
 watch(itemIndex, (index) => {
   // console.log(index);

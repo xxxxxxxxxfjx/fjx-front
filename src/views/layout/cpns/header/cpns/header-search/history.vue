@@ -11,22 +11,29 @@
     <div class="flex flex-wrap">
       <div
         class="flex items-center px-1 py-0.5 mr-1 mt-1 text-sm text-zinc-900 rounded-sm bg-zinc-100 font-bold cursor-pointer hover:bg-zinc-200"
-        v-for="(item, index) in historyStore.history" :key="item">
+        v-for="(item, index) in historyStore.history" :key="item" @click="onSelectHandler(item)">
         <span>{{ item }}</span>
         <fjx-svg-icon name="input-delete" class="w-2.5 h-2.5 p-0.5 ml-1 duration-300 rounded-sm hover:bg-zinc-50 "
-          @click="onDeleteOneHandler(item)"></fjx-svg-icon>
+          @click.stop="onDeleteOneHandler(item)"></fjx-svg-icon>
       </div>
     </div>
   </div>
 </template>
 
+<script>
+const EMIT_SELECT = 'select'
+</script>
+
 <script setup>
 import { } from 'vue'
 import { confirm } from '@/libs/confirm';
 import { useHistoryStore } from "@/stores/history.js"
+import { useAppStore } from '@/stores/app';
 
 const historyStore = useHistoryStore()
+const appStore = useAppStore()
 
+const emits = defineEmits([EMIT_SELECT])
 
 // 触发删除所有搜索历史记录
 const onDeleteAllHandler = () => {
@@ -40,6 +47,11 @@ const onDeleteOneHandler = (item) => {
   historyStore.deleteHistory(item)
 }
 
+// 选中某个历史记录
+const onSelectHandler = (item) => {
+  historyStore.addHistory(item)
+  emits(EMIT_SELECT, item)
+}
 </script>
 
 <style lang='scss' scoped></style>

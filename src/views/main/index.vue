@@ -11,7 +11,7 @@
 <script setup>
 import { ref } from 'vue'
 import { isMobileTerminal } from "@/utils/flexiable"
-import { useCategoryStore } from "@/stores/category"
+import { useAppStore } from "@/stores/app"
 import MobileVue from "./cpns/mobile/index.vue"
 import PcVue from "./cpns/pc/index.vue"
 import ListVue from "@/components/list/index.vue"
@@ -20,9 +20,9 @@ import ListVue from "@/components/list/index.vue"
 console.log(isMobileTerminal.value);
 
 const data = ref([])
-const categoryStore = useCategoryStore()
+const appStore = useAppStore()
 const getCategoryData = async () => {
-  data.value = await categoryStore.getCategoryApi()
+  data.value = await appStore.getCategoryApi()
 }
 getCategoryData()
 </script>

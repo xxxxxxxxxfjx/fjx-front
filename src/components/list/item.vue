@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white rounded dark:bg-zinc-900 pb-1 xl:dark:bg-zinc-800" :style="{ width: columnWidth + 'px' }">
-    <div class="w-full relative rounded cursor-zoom-in group duration-200" :style="{ backgroundColor: color() }">
+    <div class="w-full relative rounded cursor-zoom-in group duration-200" :style="{ backgroundColor: randomRGB() }">
       <img v-lazy :src="data.photo" class="w-full  rounded bg-transparent "
         :style="{ height: (columnWidth / data.photoWidth) * data.photoHeight + 'px' }">
       <div
@@ -24,7 +24,7 @@
 
 <script setup>
 import { } from 'vue'
-import { color } from "@/utils/color"
+import { randomRGB } from "@/utils/color"
 
 const props = defineProps({
   data: {
