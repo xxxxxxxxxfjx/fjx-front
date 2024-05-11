@@ -1,5 +1,5 @@
 <template>
-  <fjx-search class="mr-2" v-model="inputValue">
+  <fjx-search ref="searchRef" class="mr-2" v-model="inputValue" @search="onSearchHandler">
     <template #dropdown>
       <div>
         <hint-vue v-show="inputValue" :searchText="inputValue" @handleClick="onSearchHandler"></hint-vue>
@@ -10,10 +10,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import HintVue from './hint.vue'
 import HistoryVue from './history.vue'
 import { useHistoryStore } from '@/stores/history';
+
+const searchRef = ref(null)
 
 const inputValue = ref("")
 const historyStore = useHistoryStore()
@@ -24,6 +26,7 @@ const onSearchHandler = (val) => {
   if (val) {
     historyStore.addHistory(val)
   }
+  nextTick(searchRef.value.closeDropDown())
 }
 
 </script>

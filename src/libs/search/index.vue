@@ -54,6 +54,7 @@ const inputValue = defineModel()
 const inputFocus = ref(false)
 // 触发搜索事件
 const onSearchHandlder = () => {
+  // console.log(1);
   try {
     if (!inputValue.value.length) {
       return
@@ -86,7 +87,13 @@ onClickOutside(containerRef, () => {
   inputFocus.value = false
 })
 
-
+// 暴露关闭下拉菜单
+const closeDropDown = () => {
+  inputFocus.value = false
+}
+defineExpose({
+  closeDropDown
+})
 </script>
 
 <style lang='scss' scoped>
