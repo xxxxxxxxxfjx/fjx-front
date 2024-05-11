@@ -2,8 +2,11 @@
   <fjx-search ref="searchRef" class="mr-2" v-model="inputValue" @search="onSearchHandler">
     <template #dropdown>
       <div>
+        <!-- 搜索提示 -->
         <hint-vue v-show="inputValue" :searchText="inputValue" @handleClick="onSearchHandler"></hint-vue>
+        <!-- 搜索历史 -->
         <history-vue v-show="!inputValue"></history-vue>
+        <!-- 推荐主题 -->
         <theme-vue v-show="!inputValue"></theme-vue>
       </div>
     </template>
@@ -25,10 +28,11 @@ const historyStore = useHistoryStore()
 
 const onSearchHandler = (val) => {
   inputValue.value = val
+  searchRef.value.closeDropDown()
   if (val) {
     historyStore.addHistory(val)
   }
-  nextTick(searchRef.value.closeDropDown())
+
 }
 
 </script>
