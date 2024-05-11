@@ -36,3 +36,5 @@ export const THEME_LIGHT = 'light'
 export const THEME_SYSTEM = 'system'
 export const THEME_DARK = 'dark'
 export const TIMEOUT = 100
+
+export const HISTORY = 'history'
