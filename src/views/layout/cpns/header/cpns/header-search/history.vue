@@ -10,7 +10,7 @@
     </div>
     <div class="flex flex-wrap">
       <div
-        class="flex items-center p-1 mr-1 mt-2 text-sm text-zinc-900 rounded-sm bg-zinc-100 font-bold cursor-pointer hover:bg-zinc-200"
+        class="flex items-center px-1 py-0.5 mr-1 mt-1 text-sm text-zinc-900 rounded-sm bg-zinc-100 font-bold cursor-pointer hover:bg-zinc-200"
         v-for="(item, index) in historyStore.history" :key="item">
         <span>{{ item }}</span>
         <fjx-svg-icon name="input-delete" class="w-2.5 h-2.5 p-0.5 ml-1 duration-300 rounded-sm hover:bg-zinc-50 "

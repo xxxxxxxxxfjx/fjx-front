@@ -13,3 +13,7 @@ export function getPexelsHint(q) {
     }
   })
 }
+
+export function getPexelsTheme() {
+  return request.get('/pexels/themes')
+}

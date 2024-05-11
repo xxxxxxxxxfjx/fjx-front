@@ -25,7 +25,7 @@ const emits = defineEmits([EMIT_HANDLE_CLICK])
 const hintData = ref([])
 const getHint = async () => {
   const { result } = await getPexelsHint(props.searchText)
-  console.log(result)
+  // console.log(result)
   hintData.value = result
 }
 const handleClick = (item) => {
