@@ -40,6 +40,7 @@ const sizeEnum = {
 
 <script setup>
 import { computed } from 'vue'
+import fjxSvgIcon from "@/libs/svg-icon/index.vue"
 
 
 
