@@ -9,7 +9,7 @@
         <fjx-button type="info" class=" absolute top-1.5 right-1.5" icon="heart"
           iconClass="fill-zinc-900 dark:fill-zinc-200"></fjx-button>
         <fjx-button type="info" size="small" class=" bg-zinc-100/70 absolute bottom-1.5 left-1.5" icon="download"
-          iconClass="fill-zinc-900 dark:fill-zinc-200"></fjx-button>
+          iconClass="fill-zinc-900 dark:fill-zinc-200" @click="onDownloadHandler"></fjx-button>
         <fjx-button type="info" size="small" class=" bg-zinc-100/70 absolute bottom-1.5 right-1.5" icon="full"
           iconClass="fill-zinc-900 dark:fill-zinc-200"></fjx-button>
       </div>
@@ -25,6 +25,8 @@
 <script setup>
 import { } from 'vue'
 import { randomRGB } from "@/utils/color"
+import { saveAs } from 'file-saver'
+import { message } from '@/libs';
 
 const props = defineProps({
   data: {
@@ -36,6 +38,18 @@ const props = defineProps({
     default: 200
   }
 })
+
+
+// 下载功能
+const onDownloadHandler = () => {
+  // 提示消息
+  message('success', '图片开始下载')
+  setTimeout(() => {
+    saveAs(props.data.photo, props.data.title)
+  }, 100)
+}
+
+
 </script>
 
 <style lang='scss' scoped></style>
