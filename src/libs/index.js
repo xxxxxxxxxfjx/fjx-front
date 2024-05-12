@@ -1,5 +1,7 @@
 import { defineAsyncComponent } from 'vue'
 import { COMPONENT_PREFIX } from '@/constants'
+export { confirm } from './confirm'
+export { message } from './message'
 
 export default {
   install(app) {
