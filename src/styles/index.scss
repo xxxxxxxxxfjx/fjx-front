@@ -5,3 +5,9 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
+.driver-fix-stacking {
+  position: relative;
+}
+.driver-popover-footer {
+  line-height: 0;
+}
