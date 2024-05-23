@@ -1,5 +1,5 @@
 <template>
-  <fjx-popover>
+  <fjx-popover class="guide-my">
     <template #reference>
       <div
         class="flex items-center relative cursor-pointer p-0.5 rounded-sm hover:bg-zinc-100/90 dark:hover:bg-zinc-900">

@@ -1,5 +1,5 @@
 <template>
-  <fjx-search ref="searchRef" class="mr-2" v-model="inputValue" @search="onSearchHandler">
+  <fjx-search ref="searchRef" class="mr-2 guide-search" v-model="inputValue" @search="onSearchHandler">
     <template #dropdown>
       <div>
         <!-- 搜索提示 -->

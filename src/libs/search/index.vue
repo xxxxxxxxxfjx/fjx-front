@@ -20,7 +20,7 @@
     </div>
     <transition name="slide">
       <div v-if="slots.dropdown" v-show="inputFocus"
-        class=" max-h-[368px] w-full text-base overflow-auto bg-white absolute z-20 left-0 top-[56px] p-2 rounded border border-zinx-200 duration-200 hover:shadow-3xl dark:bg-zinc-800  dark:border-zinc-600">
+        class=" max-h-[368px] w-full text-base overflow-auto bg-white absolute z-20 left-0 top-[56px] p-2 rounded border border-zinx-200 duration-200 hover:shadow-3xl dark:bg-zinc-800  dark:border-zinc-600 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-900 scrollbar-track-transparent">
         <slot name="dropdown" />
       </div>
     </transition>

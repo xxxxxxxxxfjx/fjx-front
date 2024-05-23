@@ -1,5 +1,6 @@
 <template>
-  <div class="home h-full overflow-auto bg-white dark:bg-zinc-800 duration-500">
+  <div
+    class="h-full overflow-auto bg-white dark:bg-zinc-800 duration-500 scrollbar-thin scrollbar-thumb-transparent xl:scrollbar-thumb-zinc-200 xl:dark:scrollbar-thumb-zinc-900 scrollbar-track-transparent">
     <mobile-vue v-if="isMobileTerminal" v-model="data"></mobile-vue>
     <pc-vue v-else v-model="data"></pc-vue>
     <div class="max-w-screen-xl mx-auto realative m-1 xl:mt-4">

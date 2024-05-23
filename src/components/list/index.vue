@@ -5,7 +5,7 @@
       <item-vue :data="item" :columnWidth="width" :index="index" />
     </template>
 </fjx-waterfall> -->
-  <!-- <fjx-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
+  <fjx-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
     <e-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
       :picturePreReading="false">
 
@@ -13,8 +13,8 @@
         <item-vue :data="item" :columnWidth="width" :index="index" />
       </template>
     </e-waterfall>
-  </fjx-infinite> -->
-  <e-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
+  </fjx-infinite>
+  <!-- <e-infinite v-model="loading" :isFinished="isFinished" @onLoading="getPexelsList">
     <e-waterfall class="w-full  px-1" :data="pexelsList" nodeKey="id" :columns="isMobileTerminal ? 2 : 5"
       :picturePreReading="false">
 
@@ -22,7 +22,7 @@
         <item-vue :data="item" :columnWidth="width" :index="index" />
       </template>
     </e-waterfall>
-  </e-infinite>
+  </e-infinite> -->
 </template>
 
 <script setup>
