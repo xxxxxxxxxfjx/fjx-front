@@ -1,17 +1,8 @@
 <template>
   <div
     class=" relative w-screen h-screen bg-white dark:bg-zinc-900 xl:bg-zinc-100 xl:p-3 xl:dark:bg-zinc-800 overflow-hidden">
-    <!-- pc端头部图标 -->
-    <div class=" hidden w-[388px] mx-auto xl:block dark:hidden">
-      <img class="w-full" src="https://res.lgdsunday.club/signlogo.png" alt="">
-    </div>
-    <!-- 移动端图标 -->
-    <div class="w-full h-[100px] block xl:hidden relative ">
-      <img src="https://res.lgdsunday.club/login-bg.png" class="dark:hidden">
-      <img class=" absolute top-[40%] left-[50%] translate-x-[-50%] w-6"
-        src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png" alt="">
-    </div>
-
+    <!-- 顶部图片 -->
+    <header-vue></header-vue>
     <!-- 表单 -->
     <div class="w-full xl:w-[400px] mx-auto bg-white dark:bg-zinc-900 rounded px-3 xl:p-4 mt-3">
       <h3 class="hidden w-full text-base font-bold text-center text-main dark:text-zinc-100 xl:block">账号登录</h3>
@@ -31,14 +22,13 @@
         <fjx-svg-icon class="w-4 h-4 cursor-pointer" name="qq"></fjx-svg-icon>
         <fjx-svg-icon class="w-4 h-4 cursor-pointer" name="wexin"></fjx-svg-icon>
       </div>
-
     </div>
-
   </div>
 </template>
 
 <script setup>
 import { } from 'vue'
+import HeaderVue from "../cpns/header.vue"
 
 </script>
 
