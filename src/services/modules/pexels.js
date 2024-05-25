@@ -17,3 +17,6 @@ export function getPexelsHint(q) {
 export function getPexelsTheme() {
   return request.get('/pexels/themes')
 }
+export function getPexelsById(id) {
+  return request.get(`/pexels/${id}`)
+}
