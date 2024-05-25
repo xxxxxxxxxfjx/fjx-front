@@ -34,6 +34,12 @@ export default {
       },
       variants: {
         scrollbar: ['dark']
+      },
+      backdropBlur: {
+        '4xl': '240px'
+      },
+      zIndex: {
+        60: '60'
       }
     }
   },

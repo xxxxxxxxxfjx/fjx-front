@@ -1,6 +1,7 @@
 <template>
   <div class="bg-white rounded dark:bg-zinc-900 pb-1 xl:dark:bg-zinc-800" :style="{ width: columnWidth + 'px' }">
-    <div class="w-full relative rounded cursor-zoom-in group duration-200" :style="{ backgroundColor: randomRGB() }">
+    <div class="w-full relative rounded cursor-zoom-in group duration-200" :style="{ backgroundColor: randomRGB() }"
+      @click="onClickHandler">
       <img v-lazy ref="imgRef" :src="data.photo" class="w-full  rounded bg-transparent "
         :style="{ height: (columnWidth / data.photoWidth) * data.photoHeight + 'px' }">
       <!-- 蒙版 -->
@@ -28,11 +29,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { randomRGB } from "@/utils/color"
 import { saveAs } from 'file-saver'
 import { message } from '@/libs';
-import { useFullscreen } from '@vueuse/core'
+import { useFullscreen, useElementBounding } from '@vueuse/core'
 
 const props = defineProps({
   data: {
@@ -44,6 +45,8 @@ const props = defineProps({
     default: 200
   }
 })
+
+const emits = defineEmits(['click'])
 
 
 // 下载功能
@@ -57,6 +60,20 @@ const onDownloadHandler = () => {
 
 const imgRef = ref(null)
 const { enter } = useFullscreen(imgRef)
+
+// 解构响应式数据
+const { x: left, y: top, width, height } = useElementBounding(imgRef)
+// 计算图片的中心位置
+const container = computed(() => ({
+  translateX: width.value / 2 + left.value,
+  translateY: height.value / 2 + top.value
+}))
+
+// 点击查看：url改变+组件切换
+const onClickHandler = () => {
+  emits('click', { id: props.data.id, location: container.value })
+  // history.pushState({}, '', `/photo/${props.data.id}`)
+}
 
 </script>
 
