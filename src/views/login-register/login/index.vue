@@ -32,19 +32,46 @@
         <fjx-svg-icon class="w-4 h-4 cursor-pointer" name="wexin"></fjx-svg-icon>
       </div>
     </div>
+    <slider-captcha-vue v-if="isVisiable" @close="handleClose" @success="handleSuccess"
+      @failed="handleFalied"></slider-captcha-vue>
   </div>
 </template>
 
 <script setup>
-import { } from 'vue'
+import { ref } from 'vue'
 import HeaderVue from "../cpns/header.vue"
 import { usernameValidate, passwordValidate } from "@/utils/validate"
 import { Field as VeeField, Form as VeeForm, ErrorMessage as VeeErrorMessage } from "vee-validate"
+import SliderCaptchaVue from './slider-captcha.vue'
+import { message } from "@/libs/index.js"
 
 
+
+// 控制人类行为验证组件
+const isVisiable = ref(false)
+// 关闭人类行为验证
+const handleClose = () => {
+  isVisiable.value = false
+}
 // 表单提交
 const handleSubmit = () => {
   console.log("出发登录");
+  isVisiable.value = true
+}
+
+// 处理人类行为验证成功事件
+const handleSuccess = () => {
+  setTimeout(() => {
+    message('success', '验证成功')
+    isVisiable.value = false
+  }, 500)
+}
+
+// 处理人类行为验证失败事件
+const handleFalied = () => {
+  setTimeout(() => {
+    message('error', '验证失败')
+  }, 500)
 }
 </script>
 
