@@ -6,18 +6,27 @@
     <!-- 表单 -->
     <div class="w-full xl:w-[400px] mx-auto bg-white dark:bg-zinc-900 rounded px-3 xl:p-4 mt-3">
       <h3 class="hidden w-full text-base font-bold text-center text-main dark:text-zinc-100 xl:block">账号登录</h3>
-      <form class="w-full  mt-3">
-        <input type="text"
-          class="w-full outline-0 pl-1.5 mb-1 pb-1 border-b text-base text-zinc-800 dark:text-zinc-300 border-b-zinc-500  dark:border-b-zinc-300 bg-white dark:bg-zinc-900 dark:focus:border-b-zinc-100"
-          placeholder="用户名" autocomplete="on">
-        <input type="password"
-          class="w-full outline-0 pl-1.5 mb-1 pb-1 border-b text-base text-zinc-800 dark:text-zinc-300 border-b-zinc-500  dark:border-b-zinc-300 bg-white dark:bg-zinc-900 dark:focus:border-b-zinc-100"
-          placeholder="密码" autocomplete="on">
+      <vee-form class="w-full  mt-3" @submit="handleSubmit">
+        <div class="w-full relative">
+          <vee-field type="text"
+            class="w-full outline-0 pl-1.5 mb-1 pb-1 border-b text-base text-zinc-800 dark:text-zinc-300 border-b-zinc-500  dark:border-b-zinc-300 bg-white dark:bg-zinc-900 dark:focus:border-b-zinc-100"
+            placeholder="用户名" autocomplete="on" name="username" :rules="usernameValidate" />
+          <vee-error-message class=" text-xs text-main font-bold absolute bottom-[-15px] left-0"
+            name="username"></vee-error-message>
+        </div>
+        <div class="w-full relative">
+          <vee-field type="password"
+            class="w-full outline-0 pl-1.5 mb-1 pb-1 border-b text-base text-zinc-800 dark:text-zinc-300 border-b-zinc-500  dark:border-b-zinc-300 bg-white dark:bg-zinc-900 dark:focus:border-b-zinc-100"
+            placeholder="密码" autocomplete="on" name="password" :rules="passwordValidate" />
+          <vee-error-message class=" text-xs text-main font-bold absolute bottom-[-15px] left-0"
+            name="password"></vee-error-message>
+        </div>
+
         <div class="w-full text-end mb-2">
           <a class=" text-zinc-400 text-sm p-1 cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-100">去注册</a>
         </div>
         <fjx-button class="w-full dark:bg-zinc-800 xl:dark:bg-zinc-800">登录</fjx-button>
-      </form>
+      </vee-form>
       <div class="w-full flex justify-around mt-5">
         <fjx-svg-icon class="w-4 h-4 cursor-pointer" name="qq"></fjx-svg-icon>
         <fjx-svg-icon class="w-4 h-4 cursor-pointer" name="wexin"></fjx-svg-icon>
@@ -29,7 +38,14 @@
 <script setup>
 import { } from 'vue'
 import HeaderVue from "../cpns/header.vue"
+import { usernameValidate, passwordValidate } from "@/utils/validate"
+import { Field as VeeField, Form as VeeForm, ErrorMessage as VeeErrorMessage } from "vee-validate"
 
+
+// 表单提交
+const handleSubmit = () => {
+  console.log("出发登录");
+}
 </script>
 
 <style lang='scss' scoped></style>
