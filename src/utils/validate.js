@@ -4,8 +4,8 @@ export const usernameValidate = (val) => {
   if (!val) {
     return '用户名不能为空！'
   }
-  if (val.length < 3 || val.length > 9) {
-    return '用户名长度在 3-9 之间'
+  if (val.length < 6 || val.length > 20) {
+    return '用户名长度在 6-20 之间'
   }
   return true
 }
@@ -14,8 +14,8 @@ export const passwordValidate = (val) => {
   if (!val) {
     return '密码不能为空！'
   }
-  if (val.length < 3 || val.length > 9) {
-    return '密码长度在 3-9 之间'
+  if (val.length < 6 || val.length > 20) {
+    return '密码长度在 6-20 之间'
   }
   return true
 }
