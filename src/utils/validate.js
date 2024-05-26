@@ -19,3 +19,12 @@ export const passwordValidate = (val) => {
   }
   return true
 }
+
+// 注册时，密码确认
+export const confirmPassword = (val, [password]) => {
+  // console.log(val, password)
+  if (val !== password) {
+    return '两次密码输入必须一致'
+  }
+  return true
+}

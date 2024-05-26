@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { postLoginApi, getUserInfoApi } from '@/services/modules/sys.js'
-import md5 from 'md5'
+
 import { TOKEN, USER_INFO } from '@/constants'
 import { setItem, getItem, removeItem } from '@/utils/store'
 
@@ -24,10 +24,7 @@ const useUserStore = defineStore('user', () => {
     removeItem(USER_INFO)
   }
   async function postUserLoginApi(payloads) {
-    const res = await postLoginApi({
-      ...payloads,
-      password: md5(payloads.password)
-    })
+    const res = await postLoginApi(payloads)
     // console.log(res)
     setToken(res.token)
     return true
