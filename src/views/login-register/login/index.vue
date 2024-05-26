@@ -93,6 +93,7 @@ const handleFalied = () => {
 const onLogin = async () => {
   try {
     loading.value = true
+    // 登录
     const res = await userStore.postUserLoginApi({
       ...form,
       loginType: LOGIN_TYPE_USERNAME
@@ -103,6 +104,16 @@ const onLogin = async () => {
     // })
     if (res) {
       message("success", "登录成功")
+      // 获取用户信息
+      const data = await userStore.getUserInfosApi()
+      message(
+        'success',
+        `欢迎您 ${data.vipLevel
+          ? '尊贵的 VIP' + data.vipLevel + ' 用户 ' + data.nickname
+          : data.nickname
+        } `,
+        6000
+      )
       router.push("/")
     } else {
       message("error", "登录失败")

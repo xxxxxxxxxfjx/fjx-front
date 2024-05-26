@@ -37,6 +37,7 @@ export const CATEGORY_NOMAR_DATA = [
 // 组件前缀名
 export const COMPONENT_PREFIX = 'fjx'
 // 系统主题模式
+export const THEME = 'theme'
 export const THEME_LIGHT = 'light'
 export const THEME_SYSTEM = 'system'
 export const THEME_DARK = 'dark'
@@ -48,3 +49,5 @@ export const HISTORY = 'history'
 export const LOGIN_TYPE_USERNAME = 'username'
 // token
 export const TOKEN = 'token'
+// 用户信息
+export const USER_INFO = 'userInfo'
