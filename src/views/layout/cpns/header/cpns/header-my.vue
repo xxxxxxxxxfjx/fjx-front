@@ -16,7 +16,7 @@
     </template>
 
     <div v-if="userStore.token" class="w-[140px] overflow-auto">
-      <div v-for="(item, index) in menuArr" :key="index"
+      <div v-for="(item, index) in menuArr" :key="index" @click="handleMenuClick(item)"
         class="flex p-1  rounded cursor-pointer hover:bg-zinc-100/60 dark:hover:bg-zinc-800">
         <fjx-svg-icon :name="item.icon" class="w-1.5 h-1.5 mr-1"
           fillClass="text-gray-500 dark:fill-zinc-300"></fjx-svg-icon>
@@ -30,6 +30,8 @@
 import { useUserStore } from '@/stores/user';
 import { } from 'vue'
 import { useRouter } from 'vue-router';
+import { confirm } from "@/libs"
+
 const defaultAvatar = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651074011&t=ba5d64079381425813e4c269bcac1a1b'
 const menuArr = [
   {
@@ -59,6 +61,24 @@ const handleLogin = () => {
 }
 
 const userStore = useUserStore()
+// 用户菜单点击事件处理
+const handleMenuClick = (item) => {
+  // 有路径的直接跳转
+  if (item.path) {
+    router.push(item.path)
+    return
+  }
+  // 没路劲则是退出
+  confirm("您确定要退出登录吗？").then(() => {
+    // 清除用户信息和token
+    userStore.$reset()
+    // 刷新页面
+    location.reload()
+  })
+
+}
+
+
 </script>
 
 <style lang='scss' scoped></style>

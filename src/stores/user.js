@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { postLoginApi, getUserInfoApi } from '@/services/modules/sys.js'
 import md5 from 'md5'
 import { TOKEN, USER_INFO } from '@/constants'
-import { setItem, getItem } from '@/utils/store'
+import { setItem, getItem, removeItem } from '@/utils/store'
 
 const defaultInfo = {
   token: getItem(TOKEN) || '',
@@ -18,6 +18,10 @@ const useUserStore = defineStore('user', () => {
   function setToken(t) {
     token.value = t
     setItem(TOKEN, t)
+  }
+  function $reset() {
+    removeItem(TOKEN)
+    removeItem(USER_INFO)
   }
   async function postUserLoginApi(payloads) {
     const res = await postLoginApi({
@@ -36,7 +40,14 @@ const useUserStore = defineStore('user', () => {
     return res
   }
 
-  return { token, userInfo, setToken, getUserInfosApi, postUserLoginApi }
+  return {
+    token,
+    userInfo,
+    setToken,
+    $reset,
+    getUserInfosApi,
+    postUserLoginApi
+  }
 })
 
 export { useUserStore }
