@@ -8,7 +8,7 @@ export function setItem(key, value) {
 export function getItem(key) {
   const res = localStorage.getItem(key)
   try {
-    return localStorage.getItem(res)
+    return JSON.parse(res)
   } catch (error) {
     return res
   }
