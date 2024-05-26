@@ -1,19 +1,24 @@
 <template>
   <div ref="containerRef"
-    class="group w-full  rounded-xl p-0.5   relative duration-500 hover:border-red-100 flex hover:bg-red-100/45">
+    class="group w-full  rounded-xl p-0.5 relative duration-500 hover:border-red-100 flex hover:bg-red-100/45">
     <div class="w-full">
+      <!-- 搜索icon -->
       <fjx-svg-icon name="search" color="#707070"
-        class="w-1.5 h-1.5 absolute top-[50%] translate-y-[-50%] left-2"></fjx-svg-icon>
-      <input v-model="inputValue" type="text"
-        class=" block w-full h-[44px] pl-4 outline-0 bg-zinc-100 caret-zinc-400 rounded-xl
+        class="w-1.5 h-1.5 absolute top-[50%] translate-y-[-50%] left-2 z-10"></fjx-svg-icon>
+      <!-- 搜索框 -->
+      <input v-model="inputValue" type="text" style="display: block;"
+        class=" w-full h-[44px] pl-4 outline-0 bg-zinc-100 caret-zinc-400 rounded-xl
          text-zinc-900 tracking-wide font-semibold border border-zinc-100 duration-500 text-sm
         group-hover:bg-white group-hover:border-zinc-200 focus:border-red-300 dark:bg-zinc-800  dark:text-zinc-200  dark:border-zinc-700  dark:group-hover:bg-zinc-900 dark:group-hover:border-zinc-700"
         placeholder="搜索" @focus="onFocusHandlder" @blur="onBlurHandlder" @keyup.enter="onSearchHandlder">
+      <!-- 删除搜索内容 -->
       <fjx-svg-icon v-if="inputValue" name="input-delete" @click="onDeleteHandler"
         class="h-1.5 w-1.5 opacity-100 absolute top-[50%] translate-y-[-50%] right-9 duration-500 cursor-pointer"></fjx-svg-icon>
+      <!-- 分割线 -->
       <div
         class='w-[1px] h-1.5 bg-zinc-200 absolute top-[50%] translate-y-[-50%] right-[62px] duration-500 opacity-0 group-hover:opacity-100'>
       </div>
+      <!-- 搜索按钮 -->
       <fjx-button @click="onSearchHandlder"
         class=" absolute right-1 top-[50%] translate-y-[-50%] group-hover:bg-red-400 opacity-0 duration-500 group-hover:opacity-100 rounded-full"
         icon="search" iconColor="#fff"></fjx-button>
