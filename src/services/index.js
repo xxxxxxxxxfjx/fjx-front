@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useUserStore } from '@/stores/user'
+import { message } from '@/libs'
+
 const service = axios.create({
   timeout: 5000,
   baseURL: import.meta.env.VITE_BASE_API
@@ -27,9 +29,14 @@ service.interceptors.response.use(
     }
   },
   (err) => {
-    console.error(err)
-    const msg = err.data?.message
-    console.log(msg)
+    // 处理token超时
+    if (err.response && err.response.data && err.response.data.code === 401) {
+      const userStore = useUserStore()
+      userStore.$reset()
+      location.reload()
+      message('error', err.response.data.message)
+    }
+    return Promise.reject(err)
   }
 )
 

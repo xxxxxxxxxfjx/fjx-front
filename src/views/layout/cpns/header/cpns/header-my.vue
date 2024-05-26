@@ -61,6 +61,7 @@ const handleLogin = () => {
 }
 
 const userStore = useUserStore()
+console.log(userStore.token);
 // 用户菜单点击事件处理
 const handleMenuClick = (item) => {
   // 有路径的直接跳转
