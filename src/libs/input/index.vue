@@ -25,9 +25,9 @@ const TEXTAREA = 'textarea'
 import { computed } from 'vue'
 
 // vue3.4新语法 替代v-model的
-const text = defineModel({ required: true, type: String })
+const text = defineModel({ required: true, type: String, default: '' })
 // 记录输入文本长度
-const currentNumber = computed(() => text.value.length)
+const currentNumber = computed(() => text.value?.length)
 const props = defineProps({
   type: {
     type: String,

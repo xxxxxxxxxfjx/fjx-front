@@ -39,15 +39,15 @@ const handleClickRow = (row) => {
   <!-- <fjx-message type="success" content="222222222"></fjx-message> -->
   <!-- <fjx-input v-model="text" class="w-[300px]" type="textarea" max="30"></fjx-input> -->
   <!-- <fjx-validate-input v-model="text" class="w-[300px]" :rules="rules" placeholder="请输入内容"></fjx-validate-input> -->
-  <fjx-table class=" w-[500px] border" :columns="columns" :dataSource="dataSource" :serialNumber="true" height="200"
+  <!-- <fjx-table class=" w-[500px] border" :columns="columns" :dataSource="dataSource" :serialNumber="true" height="200"
     @click-row="handleClickRow">
     <template #operate="{ row }">
       <fjx-button type="primary" size="small" @click.stop="() => console.log(row)">编辑</fjx-button>
     </template>
-  </fjx-table>
-  <!-- <div class="fixed top-0 left-0 w-screen h-screen">
+</fjx-table> -->
+  <div class="fixed top-0 left-0 w-screen h-screen">
     <router-view></router-view>
-  </div> -->
+  </div>
 </template>
 
 <style scoped></style>
