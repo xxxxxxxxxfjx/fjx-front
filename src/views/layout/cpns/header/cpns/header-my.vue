@@ -71,10 +71,12 @@ const handleMenuClick = (item) => {
   }
   // 没路劲则是退出
   confirm("您确定要退出登录吗？").then(() => {
+    router.push('/')
+
     // 清除用户信息和token
     userStore.$reset()
     // 刷新页面
-    location.reload()
+    // location.reload()
   })
 
 }

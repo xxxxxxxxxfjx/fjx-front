@@ -19,7 +19,12 @@ const useUserStore = defineStore('user', () => {
     token.value = t
     setItem(TOKEN, t)
   }
+  function setUserInfo(info) {
+    userInfo.value = info
+  }
   function $reset() {
+    token.value = ''
+    userInfo.value = {}
     removeItem(TOKEN)
     removeItem(USER_INFO)
   }
@@ -40,6 +45,7 @@ const useUserStore = defineStore('user', () => {
   return {
     token,
     userInfo,
+    setUserInfo,
     setToken,
     $reset,
     getUserInfosApi,
