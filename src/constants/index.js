@@ -51,3 +51,9 @@ export const LOGIN_TYPE_USERNAME = 'username'
 export const TOKEN = 'token'
 // 用户信息
 export const USER_INFO = 'userInfo'
+
+// STS 上传数据
+// 存储域
+export const REGION = 'oss-cn-beijing'
+// bucket名
+export const BUCKET = 'fjx-front'

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-5 w-screen fixed bg-zinc-100 border-b border-b-zinc-200 dark:bg-zinc-900 dark:border-b-zinc-950"
+  <div class="h-5 w-screen fixed bg-zinc-100 border-b border-b-zinc-200 z-50 dark:bg-zinc-900 dark:border-b-zinc-950"
     :class="[sticky ? 'sticky top-0' : 'relative']">
     <!-- 左侧按钮 -->
     <div class=" h-full w-5 absolute left-0 top-0 flex justify-center items-center cursor-pointer" @click="clickLeft">

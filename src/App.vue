@@ -31,6 +31,7 @@ const dataSource = [
 const handleClickRow = (row) => {
   console.log(row);
 }
+const isVisiable = ref(true)
 
 </script>
 
@@ -45,6 +46,7 @@ const handleClickRow = (row) => {
       <fjx-button type="primary" size="small" @click.stop="() => console.log(row)">编辑</fjx-button>
     </template>
 </fjx-table> -->
+  <!-- <fjx-dialog v-model="isVisiable" title="标题">测试内容</fjx-dialog> -->
   <div class="fixed top-0 left-0 w-screen h-screen">
     <router-view></router-view>
   </div>
