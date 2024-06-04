@@ -10,6 +10,7 @@ import setTheme from '@/utils/theme'
 
 import App from './App.vue'
 import router from './router'
+import './permission.js'
 
 const app = createApp(App)
 
