@@ -37,6 +37,7 @@ import 'cropperjs/dist/cropper.css'
 import { getOSSClient } from "@/utils/sts"
 import { message } from '@/libs';
 import { useUserStore } from '@/stores/user';
+import { putProfile } from '@/services/modules/sys';
 
 defineProps({
   blob: {
@@ -77,12 +78,27 @@ const upload = async (file) => {
     loading.value = true
     const fileTypeArr = file.type.split('/')
     const filename = `${userStore.userInfo.username}/${Date.now()}.${fileTypeArr[fileTypeArr.length - 1]}`
-    await OSSClient.put(`images/${filename}`, file)
+    const res = await OSSClient.put(`images/${filename}`, file)
+    console.log(res);
+    updateUserInfos(res.url)
+    emits(EMIT_CLOSE)
   } catch (error) {
     message('error', error)
   } finally {
     loading.value = false
   }
+}
+
+
+const updateUserInfos = async (url) => {
+  userStore.setUserInfo({
+    ...userStore.userInfo,
+    avatar: url
+  })
+  console.log(userStore.userInfo);
+  const res = await putProfile(userStore.userInfo)
+  console.log(res);
+  message('success', '头像更新成功')
 }
 
 </script>

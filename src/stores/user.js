@@ -21,6 +21,7 @@ const useUserStore = defineStore('user', () => {
   }
   function setUserInfo(info) {
     userInfo.value = info
+    setItem(USER_INFO, info)
   }
   function $reset() {
     token.value = ''

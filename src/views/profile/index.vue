@@ -80,7 +80,7 @@ const fileRef = ref(null)
 const userStore = useUserStore()
 
 // 拷贝用户信息
-const userInfo = ref(JSON.parse(JSON.stringify(userStore.userInfo)))
+let userInfo = ref(JSON.parse(JSON.stringify(userStore.userInfo)))
 
 // 保存修改
 const loading = ref(false)
@@ -123,6 +123,14 @@ watch(isVisiable, (val) => {
   if (!val) {
     fileRef.value.value = null
   }
+})
+
+
+watch(() => userStore.userInfo, val => {
+  console.log(val);
+  userInfo.value = JSON.parse(JSON.stringify(val))
+}, {
+  deep: true
 })
 </script>
 
