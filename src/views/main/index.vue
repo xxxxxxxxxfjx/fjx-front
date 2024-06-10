@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div ref="containerRef"
     class="h-full overflow-auto bg-white dark:bg-zinc-800 duration-500 scrollbar-thin scrollbar-thumb-transparent xl:scrollbar-thumb-zinc-200 xl:dark:scrollbar-thumb-zinc-900 scrollbar-track-transparent">
     <mobile-vue v-if="isMobileTerminal" v-model="data"></mobile-vue>
     <pc-vue v-else v-model="data"></pc-vue>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onActivated } from 'vue'
 import { isMobileTerminal } from "@/utils/flexiable"
 import { useAppStore } from "@/stores/app"
 import { useUserStore } from '@/stores/user'
@@ -35,6 +35,7 @@ import MobileVue from "./cpns/mobile/index.vue"
 import PcVue from "./cpns/pc/index.vue"
 import ListVue from "@/components/list/index.vue"
 import { useRouter } from 'vue-router'
+import { useScroll } from '@vueuse/core'
 
 
 console.log(isMobileTerminal.value);
@@ -63,6 +64,20 @@ const handleMyClick = () => {
 const handleVIPClick = () => { }
 
 console.log("home页面");
+
+
+
+
+const containerRef = ref(null)
+// 记录页面滚动位置
+const { y: containerScrollY } = useScroll(containerRef)
+// 激活页面时的回调
+onActivated(() => {
+  if (!containerRef.value) {
+    return
+  }
+  containerRef.value.scrollTop = containerScrollY.value
+})
 </script>
 
 <style lang='scss' scoped></style>
