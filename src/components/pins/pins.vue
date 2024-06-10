@@ -39,6 +39,9 @@ import { isMobileTerminal } from "@/utils/flexiable"
 import { getPexelsById } from "@/services/modules/pexels"
 import { randomRGB } from '@/utils/color';
 import { useRouter } from 'vue-router';
+import { useAppStore } from "@/stores/app"
+
+const appStore = useAppStore()
 
 const emits = defineEmits('close')
 const props = defineProps({
@@ -59,10 +62,14 @@ getData()
 // 关闭组件，并路由返回
 const router = useRouter()
 const handleClose = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('back')
   router.back()
 }
 // 移动端触发事件
 const onPop = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('back')
   router.back()
 }
 </script>

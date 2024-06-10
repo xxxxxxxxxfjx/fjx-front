@@ -4,11 +4,14 @@ import { CATEGORY, CATEGORY_NOMAR_DATA, ALL_CATEGORY } from '@/constants'
 import { getItem, setItem } from '@/utils/store'
 import { getCategory } from '@/services/modules/app'
 import * as _ from 'lodash'
+import { isMobileTerminal } from '@/utils/flexiable'
 
 const defaultConfig = {
   category: getItem(CATEGORY) || CATEGORY_NOMAR_DATA
 }
 const useAppStore = defineStore('app', () => {
+  // 页面过度状态
+  const routerType = ref('none')
   // 搜索文本
   const searchText = ref('')
   // 主题类别
@@ -24,6 +27,18 @@ const useAppStore = defineStore('app', () => {
     currentCategoryIndex.value = category.value.findIndex(
       (t) => t.id === item.id
     )
+  }
+  // 设置router状态
+  function setRouterType(type) {
+    routerType.value = type
+  }
+  // 获取router状态
+  function getRouterType() {
+    // pc端就返回none
+    if (!isMobileTerminal.value) {
+      return 'none'
+    }
+    return routerType.value
   }
   /**
    * 设置搜索文本
@@ -45,10 +60,13 @@ const useAppStore = defineStore('app', () => {
     return category.value
   }
   return {
+    routerType,
     searchText,
     category,
     currentCategory,
     currentCategoryIndex,
+    setRouterType,
+    getRouterType,
     setSearchText,
     setCurrentCategory,
     getCategoryApi

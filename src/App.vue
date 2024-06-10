@@ -1,7 +1,11 @@
 <script setup>
 // import { message } from './libs/message';
 // message('success', '22222222222', 3000)
+import { useAppStore } from '@/stores/app';
 import { ref } from 'vue'
+const appStore = useAppStore()
+
+// 测试代码
 const text = ref('')
 const rules = [
   { type: 'require', message: '请输入内容' },
@@ -48,7 +52,9 @@ const isVisiable = ref(true)
 </fjx-table> -->
   <!-- <fjx-dialog v-model="isVisiable" title="标题">测试内容</fjx-dialog> -->
   <div class="fixed top-0 left-0 w-screen h-screen">
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
+    <fjx-transition-router-view :routerType="appStore.getRouterType()"
+      mainComponent="home"></fjx-transition-router-view>
   </div>
 </template>
 

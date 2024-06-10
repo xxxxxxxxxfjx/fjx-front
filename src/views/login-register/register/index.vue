@@ -34,7 +34,7 @@
 
         <div class="w-full text-end mb-2">
           <a class=" text-zinc-400 text-sm p-1 cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-100"
-            @click="$router.push('/login')">去登录</a>
+            @click="handleLogin">去登录</a>
         </div>
         <!-- 注册协议 -->
         <div class="w-full text-center mb-2">
@@ -57,6 +57,7 @@ import { Field as VeeField, Form as VeeForm, ErrorMessage as VeeErrorMessage, de
 import { message } from "@/libs/index.js"
 import { postRegisterApi } from "@/services/modules/sys"
 import { useUserStore } from "@/stores/user"
+import { useAppStore } from "@/stores/app"
 import { useRouter } from 'vue-router'
 
 // 新增验证规则
@@ -65,6 +66,7 @@ defineRule("confirmPassword", confirmPassword)
 const router = useRouter()
 // userStore 
 const userStore = useUserStore()
+const appStore = useAppStore()
 // 表单
 const form = reactive({
   username: 'LGD_Sunday',
@@ -83,6 +85,8 @@ const handleSubmit = async () => {
       password: form.password
     })
     message("success", '用户注册成功')
+    // 移动端下router跳转类型
+    appStore.setRouterType('push')
     router.push('/login')
   } catch (error) {
     message("error", error.message)
@@ -91,6 +95,11 @@ const handleSubmit = async () => {
   }
 }
 
+const handleLogin = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('push')
+  router.push('/login')
+}
 </script>
 
 <style lang='scss' scoped></style>

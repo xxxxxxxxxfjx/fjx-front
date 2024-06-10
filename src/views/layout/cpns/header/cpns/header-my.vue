@@ -28,9 +28,12 @@
 
 <script setup>
 import { useUserStore } from '@/stores/user';
+import { useAppStore } from '@/stores/app';
 import { } from 'vue'
 import { useRouter } from 'vue-router';
 import { confirm } from "@/libs"
+
+const appStore = useAppStore()
 
 const defaultAvatar = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651074011&t=ba5d64079381425813e4c269bcac1a1b'
 const menuArr = [
@@ -57,6 +60,8 @@ const menuArr = [
 // 处理登录跳转
 const router = useRouter()
 const handleLogin = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('push')
   router.push('/login')
 }
 
@@ -66,6 +71,8 @@ console.log(userStore.token);
 const handleMenuClick = (item) => {
   // 有路径的直接跳转
   if (item.path) {
+    // 移动端下router跳转类型
+    appStore.setRouterType('push')
     router.push(item.path)
     return
   }

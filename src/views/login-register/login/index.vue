@@ -24,7 +24,7 @@
 
         <div class="w-full text-end mb-2">
           <a class=" text-zinc-400 text-sm p-1 cursor-pointer hover:text-zinc-800 dark:hover:text-zinc-100"
-            @click="$router.push('/register')">去注册</a>
+            @click="handleRegister">去注册</a>
         </div>
         <fjx-button class="w-full dark:bg-zinc-800 xl:dark:bg-zinc-800" :loading="loading"
           :isActivateAnimation="false">登录</fjx-button>
@@ -50,12 +50,14 @@ import { message } from "@/libs/index.js"
 import { postLoginApi } from "@/services/modules/sys"
 import { LOGIN_TYPE_USERNAME } from "@/constants"
 import { useUserStore } from "@/stores/user"
+import { useAppStore } from "@/stores/app"
 import { useRouter } from 'vue-router'
 
 
 const router = useRouter()
 // userStore 
 const userStore = useUserStore()
+const appStore = useAppStore()
 // 表单
 const form = reactive({
   username: 'LGD_Sunday',
@@ -127,6 +129,13 @@ const onLogin = async () => {
   } finally {
     loading.value = false
   }
+}
+
+
+const handleRegister = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('push')
+  router.push('/register')
 }
 </script>
 

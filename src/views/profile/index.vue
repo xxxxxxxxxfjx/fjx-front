@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full h-full font-bold text-sm overflow-y-auto xl:bg-zinc-200">
+  <div class="w-full h-full font-bold text-sm bg-white overflow-y-auto xl:bg-zinc-200">
     <div class="max-w-screen-lg xl:bg-white xl:mx-auto xl:rounded-sm xl:mt-2 xl:px-4 xl:py-2 relative">
       <!-- 移动端头部 -->
-      <fjx-navbar sticky class="xl:hidden">个人资料</fjx-navbar>
+      <fjx-navbar sticky class="xl:hidden" :click-left="handleClickBack">个人资料</fjx-navbar>
       <!-- pc端头部 -->
       <div class=" hidden w-full text-lg font-bold text-center mb-4 xl:block">个人资料</div>
       <div class=" w-full p-1 xl:w-2/3 ">
@@ -74,7 +74,11 @@ import { message } from '@/libs';
 import { putProfile } from '@/services/modules/sys';
 import { isMobileTerminal } from '@/utils/flexiable';
 import ChangeAvatarVue from "@/components/change-avatar/index.vue"
+import { useRouter } from 'vue-router';
+import { useAppStore } from '@/stores/app';
 
+const appStore = useAppStore()
+const router = useRouter()
 const fileRef = ref(null)
 
 const userStore = useUserStore()
@@ -132,6 +136,15 @@ watch(() => userStore.userInfo, val => {
 }, {
   deep: true
 })
+
+
+const handleClickBack = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('back')
+  router.back()
+}
+
+console.log("profile页面");
 </script>
 
 <style lang='scss' scoped></style>
