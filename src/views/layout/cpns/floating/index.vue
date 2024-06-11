@@ -9,15 +9,15 @@
     <!-- 反馈 -->
     <fjx-popover :placement="'top-left'" class="guide-feedback">
       <template #reference>
-        <div
-          class="w-4 h-4 border bg-white dark:bg-zinc-900 group rounded-full border-zinc-300 dark:border-0 flex items-center justify-center cursor-pointer">
+        <div class=" w-4 h-4 border bg-white dark:bg-zinc-900 group rounded-full border-zinc-300 dark:border-0 flex
+          items-center justify-center cursor-pointer">
           <fjx-svg-icon name="feedback" class="w-2 h-2"
             fillClass="fill-zinc-900 dark:fill-zinc-200 group-hover:fill-hover-main"></fjx-svg-icon>
         </div>
       </template>
       <!-- 返回内容 -->
       <div class=" w-[150px] p-0.5 cursor-pointer bg-white duration-200   dark:bg-zinc-900">
-        <div
+        <div @click="onFeedbackClick"
           class="flex items-center p-1 bg-white hover:bg-zinc-100 rounded-sm duration-200  dark:bg-zinc-900 dark:hover:bg-zinc-700">
           <fjx-svg-icon name="feedback" class="w-1.5 h-1.5 mr-1"
             fillClass="fill-zinc-900 dark:fill-zinc-200"></fjx-svg-icon>
@@ -52,6 +52,12 @@ const onGuideClick = () => {
   driver.start()
 }
 
+// 处理用户反馈问题
+const onFeedbackClick = () => {
+  console.log(import.meta.env.VITE_FEEDBACK_URL);
+  window.open(import.meta.env.VITE_FEEDBACK_URL, '_blank')
+
+}
 
 </script>
 
