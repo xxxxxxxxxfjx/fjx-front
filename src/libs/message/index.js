@@ -1,5 +1,7 @@
-import { h, render } from 'vue'
-import MessageVue from './index.vue'
+import { h, render, defineAsyncComponent } from 'vue'
+// import MessageVue from './index.vue'
+
+const MessageVue = defineAsyncComponent(() => import('./index.vue'))
 
 export const message = (type, content, duration = 3000) => {
   // 动画结束时的回调

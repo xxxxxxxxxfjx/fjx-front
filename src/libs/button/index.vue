@@ -39,10 +39,10 @@ const sizeEnum = {
 </script>
 
 <script setup>
-import { computed } from 'vue'
-import fjxSvgIcon from "@/libs/svg-icon/index.vue"
+import { computed, defineAsyncComponent } from 'vue'
+// import fjxSvgIcon from "@/libs/svg-icon/index.vue"
 
-
+const fjxSvgIcon = defineAsyncComponent(() => import("@/libs/svg-icon/index.vue"))
 
 const props = defineProps({
   icon: {
