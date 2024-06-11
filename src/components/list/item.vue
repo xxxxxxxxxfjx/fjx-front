@@ -14,10 +14,10 @@
           iconClass="fill-zinc-900 dark:fill-zinc-200"></fjx-button>
         <!-- 下载 -->
         <fjx-button type="info" size="small" class=" bg-zinc-100/70 absolute bottom-1.5 left-1.5" icon="download"
-          iconClass="fill-zinc-900 dark:fill-zinc-200" @click="onDownloadHandler"></fjx-button>
+          iconClass="fill-zinc-900 dark:fill-zinc-200" @click.stop="onDownloadHandler"></fjx-button>
         <!-- 全屏 -->
         <fjx-button type="info" size="small" class=" bg-zinc-100/70 absolute bottom-1.5 right-1.5" icon="full"
-          iconClass="fill-zinc-900 dark:fill-zinc-200" @click="enter"></fjx-button>
+          iconClass="fill-zinc-900 dark:fill-zinc-200" @click.stop="enter"></fjx-button>
       </div>
     </div>
     <p class="text-sm font-bold mt-1 px-1 text-zinc-900 dark:text-zinc-300 line-clamp-2">{{ data.title }}</p>
