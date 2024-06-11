@@ -61,7 +61,11 @@ const handleMyClick = () => {
   }
 }
 // VIP的点击事件
-const handleVIPClick = () => { }
+const handleVIPClick = () => {
+  // 移动端下router跳转类型
+  appStore.setRouterType('push')
+  router.push('/member')
+}
 
 console.log("home页面");
 
